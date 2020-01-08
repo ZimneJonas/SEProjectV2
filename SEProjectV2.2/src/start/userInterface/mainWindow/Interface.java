@@ -36,7 +36,7 @@ class Interface extends Frame implements ActionListener{
 		myGBC.gridy = 0;
 		myGBC.gridwidth = 2; // width of the element
 		myGBC.gridheight = 2; // height of the element
-		addProduct = new Button ("Produkt hinzufügen");
+		addProduct = new Button ("Produkt hinzufuegen");
 		addProduct.setBackground(Color.green);
 		addProduct.addActionListener(this);
 		myGBL.setConstraints(addProduct, myGBC);

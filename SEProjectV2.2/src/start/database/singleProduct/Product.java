@@ -3,8 +3,8 @@ package start.database.singleProduct;
 public class Product extends ProductData{
 
 
-	Product(String name, int weight, int amount, int price,
-			int number, String category, Product prev, Product next) {
+	public Product(String name, int weight, int amount, int price,
+			int number, String category/*, Product prev, Product next*/) {
 		
 		setProductData(name, weight, amount, price, number, category);
 	}
