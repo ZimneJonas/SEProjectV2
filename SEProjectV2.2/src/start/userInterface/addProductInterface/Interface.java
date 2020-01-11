@@ -2,13 +2,14 @@ package start.userInterface.addProductInterface;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 
 @SuppressWarnings("serial")
 public class Interface extends Frame implements ActionListener {
 	Button addProduct;
 	TextField descriptionTF, weightTF, priceTF, newCategoryTF, stocknumberTF, quantityTF;
-	Label stocknumberNG;
+	Label leereEingabeFM, descriptionFM, weightFM, priceFM, newCategoryFM, stocknumberFM, quantityFM;
 	GridBagConstraints myGBC;
 	GridBagLayout myGBL;
 	
@@ -18,25 +19,32 @@ public class Interface extends Frame implements ActionListener {
 		super ("Produkt hinzufuegen"); // set title
 		myGBL = new GridBagLayout ();
 		setLayout(myGBL);
-		//f = new Frame();
 		
 		myGBC = new GridBagConstraints();
 		setVisible(true);	
 		
 		// generally
 		myGBC.fill = GridBagConstraints.HORIZONTAL;
-		myGBC.insets = new Insets(10,10,10,10) ; // distance to line: 5 above, 5 left, 5 below, 5 right 
+		myGBC.insets = new Insets(10,10,20,20) ; // distance to line: 5 above, 5 left, 5 below, 5 right 
 		
 		// Button addProduct
-		myGBC.gridx = 2;
+		myGBC.gridx = 4;
 		myGBC.gridy = 10;
-		myGBC.gridwidth = 2; // width of the element
+		myGBC.gridwidth = 1; // width of the element
 		myGBC.gridheight = 1; // height of the element
 		addProduct = new Button ("Produkt hinzufügen");
 		addProduct.setBackground(Color.green);
 		addProduct.addActionListener(this);
 		myGBL.setConstraints(addProduct, myGBC);
 		add(addProduct);
+		
+		myGBC.gridx = 1;
+		myGBC.gridy = 10;
+		myGBC.gridwidth = 2; 
+		myGBC.gridheight = 1; 
+		leereEingabeFM = new Label ("");
+		myGBL.setConstraints(leereEingabeFM, myGBC);
+		add(leereEingabeFM);
 		
 		// description
 		myGBC.gridx = 0;
@@ -55,6 +63,14 @@ public class Interface extends Frame implements ActionListener {
 		myGBL.setConstraints(descriptionTF, myGBC);
 		add(descriptionTF);
 		
+		myGBC.gridx = 4;
+		myGBC.gridy = 0;
+		myGBC.gridwidth = 2; 
+		myGBC.gridheight = 1; 
+		descriptionFM = new Label ("");
+		myGBL.setConstraints(descriptionFM, myGBC);
+		add(descriptionFM);
+		
 		// weight
 		myGBC.gridx = 0;
 		myGBC.gridy = 1;
@@ -70,7 +86,15 @@ public class Interface extends Frame implements ActionListener {
 		myGBC.gridheight = 1;
 		weightTF = new TextField (6);
 		myGBL.setConstraints(weightTF, myGBC);
-		add(weightTF);  
+		add(weightTF); 
+		
+		myGBC.gridx = 3;
+		myGBC.gridy = 1;
+		myGBC.gridwidth = 2; 
+		myGBC.gridheight = 1; 
+		weightFM = new Label ("");
+		myGBL.setConstraints(weightFM, myGBC);
+		add(weightFM);
 		
 		// price
 		myGBC.gridx = 0;
@@ -88,6 +112,14 @@ public class Interface extends Frame implements ActionListener {
 		priceTF = new TextField (50);
 		myGBL.setConstraints(priceTF, myGBC);
 		add(priceTF);
+		
+		myGBC.gridx = 4;
+		myGBC.gridy = 2;
+		myGBC.gridwidth = 2; 
+		myGBC.gridheight = 1; 
+		priceFM = new Label ("");
+		myGBL.setConstraints(priceFM, myGBC);
+		add(priceFM);
 		
 		// category
 		myGBC.gridx = 0;
@@ -115,6 +147,14 @@ public class Interface extends Frame implements ActionListener {
 		myGBL.setConstraints(newCategoryTF, myGBC);
 		add(newCategoryTF);
 		
+		myGBC.gridx = 4;
+		myGBC.gridy = 4;
+		myGBC.gridwidth = 2; 
+		myGBC.gridheight = 1; 
+		newCategoryFM = new Label ("");
+		myGBL.setConstraints(newCategoryFM, myGBC);
+		add(newCategoryFM);
+		
 		// stocknumber
 		myGBC.gridx = 0;
 		myGBC.gridy = 5;
@@ -136,9 +176,9 @@ public class Interface extends Frame implements ActionListener {
 		myGBC.gridy = 5;
 		myGBC.gridwidth = 2; 
 		myGBC.gridheight = 1; 
-		stocknumberNG = new Label ("");
-		myGBL.setConstraints(stocknumberNG, myGBC);
-		add(stocknumberNG);
+		stocknumberFM = new Label ("");
+		myGBL.setConstraints(stocknumberFM, myGBC);
+		add(stocknumberFM);
 		
 		// quantity
 		myGBC.gridx = 0;
@@ -156,6 +196,14 @@ public class Interface extends Frame implements ActionListener {
 		quantityTF = new TextField (3);
 		myGBL.setConstraints(quantityTF, myGBC);
 		add(quantityTF);
+		
+		myGBC.gridx = 3;
+		myGBC.gridy = 6;
+		myGBC.gridwidth = 2; 
+		myGBC.gridheight = 1; 
+		quantityFM = new Label (""); // get.Quantity
+		myGBL.setConstraints(quantityFM, myGBC);
+		add(quantityFM);
 		
 		pack();
 		
@@ -180,76 +228,36 @@ public class Interface extends Frame implements ActionListener {
 			String weight = weightTF.getText();
 			String quantity = quantityTF.getText();
 			
-			//check if Input is valid
-			boolean descriptionOK;
-			boolean newCategoryOK;
-			boolean stocknumberOK;
-			boolean priceOK;
-			boolean weightOK;
-			boolean quantityOK;
+			if (description.length()==0|newCategory.length()==0|stocknumber.length()==0|price.length()==0|weight.length()==0|quantity.length()==0) {
+				leereEingabeFM.setText("Bitte alle Felder ausfüllen!");}
+			else {
+				ArrayList<Integer> i = start.database.allProducts.AllProducts.addProduct(description, newCategory, stocknumber, weight, price, quantity);
+				leereEingabeFM.setText("");
+				
 			
-			//descriptionOK
-			if (description.length() <= 256) {descriptionOK = true;} else descriptionOK = false;
-
-			//newCategoryOK
-			if (newCategory.length() <= 256) {
-				newCategoryOK = true;
+				if (i.contains(0)) {this.dispose();} //Product is initialized succesfully, window gets closed
+				
+				// Fehlermeldungen
+				if (i.contains(1)) {descriptionFM.setText("zu viele Zeichen");} //Productdescription contains more than 256 characters
+				else if (i.contains(11)) {descriptionFM.setText("falsches Zeichen");}
+					else descriptionFM.setText(""); 
+				
+				if (i.contains(2)) {newCategoryFM.setText("zu viele Zeichen");} //new Category contains more than 256 characters
+				else if (i.contains(22)) {newCategoryFM.setText("falsches Zeichen");}
+					else newCategoryFM.setText("");
+				
+				if (i.contains(3)) {stocknumberFM.setText("6- stellige Zahl");}
+				else if (i.contains(4)) {stocknumberFM.setText("keine Buchstaben");} 
+					else stocknumberFM.setText("");
+				
+				if (i.contains(5)) {priceFM.setText("keine Buchstaben");} else priceFM.setText("");;
+				
+				if (i.contains(6)) {weightFM.setText("keine Buchstaben");} else weightFM.setText("");;
+				
+				if (i.contains(7)) {quantityFM.setText("keine Buchstaben");} else quantityFM.setText("");;
 			}
-				/*if (start.userInterface.changeCategory.Categories.CategoryList.contains(newCategory) == false) {
-					start.userInterface.changeCategory.Categories Cat = new start.userInterface.changeCategory.Categories(newCategory);
-				} //else print: schon vorhanden
-				newCategoryOK = true;} */
-			else newCategoryOK = false;
-			
-			//stocknumberOK
-			if (stocknumber.length() == 6) {
-				stocknumberNG.setText("");
-				stocknumberOK = isInt(stocknumber);
-			}
-			 else {
-				 stocknumberNG.setText("6- stellige Zahl");
-				 stocknumberOK = false;
-			 }
-			
-		 	//priceOK
-		 	priceOK = isInt(price);
-			
-			//weightOK
-		 	weightOK = isInt(weight);
-		 	
-		 	//quantityOK
-		 	quantityOK = isInt(quantity);
-		 	
-
-
-		 	System.out.println(descriptionOK);
-		 	System.out.println(newCategoryOK);
-		 	System.out.println(stocknumberOK);
-		 	System.out.println(priceOK);
-		 	System.out.println(weightOK);
-		 	System.out.println(quantityOK);
-		 	
-		 	if (descriptionOK&newCategoryOK&stocknumberOK&priceOK&weightOK &quantityOK == true) {
-		 		System.out.println(description + weight + price+ newCategory+ stocknumber+ quantity);
-		 	}
-			//start.database.singleProduct.ProductData eins = new start.database.singleProduct.Product(description, weight2,weight2,weight2,weight2, newCategory);
-					//(description, weight, price, newCategory, stocknumber, quantity);
-			//start.database.allProducts.AllProducts.addProduct();
-			//this.dispose();
 		}
-		//void checkInput(String name, String weight, String amount, String price, String number, String category);
 	}
-		boolean isInt(String zahl) {
-			boolean bool;
-		 	try {
-		 		int zahl2 = Integer.parseInt(zahl);
-		 		bool =  true;// else: Zahl zu groß	
-		 		}
-		 	catch(NumberFormatException ee) {
-		 		bool = false; //print: keine Buchstaben		
-		 	}
-		 	return bool;
-		}
-	
-
 }
+
+
