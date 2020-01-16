@@ -38,7 +38,14 @@ public class DataTable extends JTable{
 	public DataTable() {
 		super(model);
 		setNewDatabase();
-		//TODO Change double click on List opens EditProduct Frame
+		//TODO Open Editing frame with correct values
+		addMouseListener(new MouseAdapter() { 
+	          public void mousePressed(MouseEvent e) { 
+	        	if ((e.getClickCount()==2) && (((DataTable) e.getSource()).getSelectedRow()!=-1)) {
+	            		new EditProduct();
+	          } 
+	          }
+	        }); 
     }
 	
 	
