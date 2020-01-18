@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 
 import userInterface.mainWindow.DataTable;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
 
@@ -17,5 +19,11 @@ public class Main {
 				new userInterface.mainWindow.MainWindow (); 
 			}
 			});
+		new Timer().schedule(new TimerTask() {
+		    @Override
+		    public void run() {
+		        DataHandler.save(model);
+		    }
+		},0 , time_interval);
 	}
 }
