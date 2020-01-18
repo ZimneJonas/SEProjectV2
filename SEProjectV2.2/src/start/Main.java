@@ -23,8 +23,15 @@ public class Main {
 		new Timer().schedule(new TimerTask() {
 		    @Override
 		    public void run() {
-		        DataHandler.save(model);//here comes .....table.getModel{} 
+		        DataHandler.save(model);//TODO here comes .....table.getModel();
 		    }
 		},0 , time_interval);
+		
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+        		public void run() {
+			DataHandler.save(table.getModelmodel);//TODO here comes ....table.getModel();
+            		System.out.println("In shutdown hook");
+       			 }
+   		 }, "Shutdown-thread"));
 	}
 }
