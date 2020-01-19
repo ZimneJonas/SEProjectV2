@@ -10,6 +10,11 @@ import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Exceptions Interface, used by all Classes which throw Exceptions
+ * @author jonas
+ *
+ */
 @SuppressWarnings("serial")
 public class Exception extends Frame implements ActionListener {
 
@@ -53,10 +58,15 @@ public class Exception extends Frame implements ActionListener {
 		pack();
 	}
 	
+	  /**
+	   * 
+	   * implements the Button to dispose the Window
+	   * 
+		 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource() == okay )
+		if(e.getSource() == this.okay )
 		{
 			this.dispose();
 		}

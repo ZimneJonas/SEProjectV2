@@ -9,17 +9,36 @@ import javax.swing.*;
 import java.awt.*;
 
 
+/**
+ * EditProduct extends AddProduct. It gets the selected Row in the DataTable.
+ * The Data from the selected Row is loaded in the TextFields to make Changes easy.
+ * It implements two more TextFields to add or remove a certain amount.
+ * 
+ * @author Jonas
+ * 
+ *
+ */
 @SuppressWarnings("serial")
 public class EditProduct extends AddProduct implements ActionListener{
   int row;
+	/**
+	 * Button for deleting a selected Button
+	 */
   JButton deleteProduct;
   Label currentQuantity, quantityAdd, quantitySub;
+	/**
+	 * TextFields to add or remove
+	 */
   TextField quantityAddTF, quantitySubTF;
   
-  
+  /**
+	 * 
+	 * Constructs the EditProduct Frame. Loads the Values of the DataTable
+	 * @param row to be edited
+	 */
 public EditProduct(int row) {
 	super();
-	//this.setName("Produkt verändern");
+	//this.setName("Produkt veraendern");
 	this.row=row;
 	this.addProduct.setText("Speichern");
 	quantityTF.setVisible(false);
@@ -30,7 +49,7 @@ public EditProduct(int row) {
 	myGBC.gridy = 7;
 	myGBC.gridwidth = 2; // width of the element
 	myGBC.gridheight = 1; // height of the element
-	deleteProduct = new JButton ("Produkt löschen");
+	deleteProduct = new JButton ("Produkt loeschen");
 	deleteProduct.setBackground(Color.red);
 	myGBL.setConstraints(deleteProduct, myGBC);
 	add(deleteProduct);
@@ -48,7 +67,7 @@ public EditProduct(int row) {
 	 myGBC.gridy = 5;
 	 myGBC.gridwidth = 1; 
 	 myGBC.gridheight = 1; 
-	 quantityAdd = new Label ("Hinzufügen:");
+	 quantityAdd = new Label ("Hinzufuegen:");
 	 myGBL.setConstraints(quantityAdd, myGBC);
 	 add(quantityAdd);
 	 
@@ -82,6 +101,10 @@ public EditProduct(int row) {
   }
   
 
+	/**
+	 * actionPerformed implements the function of the Buttons.
+	 * 
+	 */
 
   @Override
   public void actionPerformed(ActionEvent e) {
@@ -100,7 +123,11 @@ public EditProduct(int row) {
     
   }
   
-
+  
+  	/**
+	 * loadValues takes the Index of the Selected Row and writes the Values to the corresponding.
+	 * @param index of Data to be loaded 
+	 */
   public void loadValues(int index) {
       
       System.out.println(row);
@@ -113,9 +140,14 @@ public EditProduct(int row) {
       //newCategoryTF.setText(start.Main.table.model.getValueAt(index, 2).toString());
   }
   
+  	/**
+	 * deleteProduct deletes the selected Row
+	 * @return reply confirmation of change
+	 * @param row to delete
+	 */
   public int deleteProduct(int row) {
     row=start.Main.table.convertRowIndexToModel(row);
-    int reply = JOptionPane.showConfirmDialog(this, "Änderungen übernehmen?", "", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);;
+    int reply = JOptionPane.showConfirmDialog(this, "Aenderungen uebernehmen?", "", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);;
       if (reply == JOptionPane.YES_OPTION) {
       String category= (String) start.Main.table.getValueAt(row,1);
       int index= start.Main.categoryList.indexOf(category);
@@ -126,6 +158,13 @@ public EditProduct(int row) {
       }
       return reply;
   }
+  
+  
+  	/**
+	 * checks whether the Name already exist
+	 * @return true if Name is NOT in the DataTable, else false
+	 * @param name String of the name TextField
+	 */
  boolean checkNameInList(String name) {
 	    if (!name.equals(start.Main.table.model.getValueAt(row, 0).toString())) {
 	    	System.out.println("AAA");
@@ -134,7 +173,11 @@ public EditProduct(int row) {
 	    return true;
  }
  
- 
+	/**
+	 * checks if the Number already exist
+	 * @return true if Number is free, else false
+	 * @param stocknumber String of the stocknumber TextField
+	 */
  boolean checkStocknumberInList(String stocknumber) {
 	    if (!stocknumber.equals(start.Main.table.model.getValueAt(row, 2).toString())) {
 	         return (super.checkStocknumberInList(stocknumber)==true);
@@ -142,7 +185,10 @@ public EditProduct(int row) {
 	    return true;
 }
   
-  
+ /**
+	 * Implements all Checks, gives Error messages or changes the product accordingly
+	 *
+	 */
   public void changeProduct() {
 	  	String quantity = "";
 	  	String quantityAdd = "";
@@ -175,7 +221,7 @@ public EditProduct(int row) {
 
 	    if (checkProduct(name, category, number, weight, price, quantityBefore) == true) {
 	    	System.out.println("1");
-		    if (quantityAdd.length() != 0 & quantitySub.length() != 0) {leereEingabeFM.setText("hinzufügen oder entnehmen");return;}
+		    if (quantityAdd.length() != 0 & quantitySub.length() != 0) {leereEingabeFM.setText("hinzufuegen oder entnehmen");return;}
 		
 		    else if (quantityAdd.length() == 0 & quantitySub.length() == 0) {quantity = quantityBefore;}
 		    else {
@@ -190,7 +236,7 @@ public EditProduct(int row) {
 		    	
 	        if (subInt != 0) {
 	        	int quantityInt = beforeInt-subInt;
-	        	if (quantityInt < 0) {leereEingabeFM.setText("nicht genügend Artikel vorhanden"); return;}
+	        	if (quantityInt < 0) {leereEingabeFM.setText("nicht genuegend Artikel vorhanden"); return;}
 	        	else {
 	        	quantity = ((Integer) quantityInt).toString();
 	        	}
@@ -200,7 +246,7 @@ public EditProduct(int row) {
 	        
 	        if (addInt != 0) {
 	        	System.out.println("2");
-	        	if (checkWeightInShelf(number, weight, quantityAdd) == 1) {leereEingabeFM.setText("Regal überlastet"); return;}
+	        	if (checkWeightInShelf(number, weight, quantityAdd) == 1) {leereEingabeFM.setText("Regal ueberlastet"); return;}
 	        	else {
 	        		int quantityInt = beforeInt+addInt;
 	        		quantity = ((Integer) quantityInt).toString();
@@ -224,50 +270,3 @@ public EditProduct(int row) {
 		    }
   }
 }
-	    	
-	    	
-	    	/*
-	    	
-	    	if (checkNameInList(name) == true) {
-	    		start.Main.table.model.setValueAt(name, row, 0);
-	    	} else {descriptionFM.setText("Produktbezeichnung schon vergeben");}
-	    		
-	    	start.Main.table.model.setValueAt(price, row, 4);  //change price
-	    	
-	  			*/
-	    
-	    
-	    
-
-  
-  
-  
-  /*
-  private int checkQuantity(String add, String sub, String before) {
-      try {   
-        int beforeInt = Integer.parseInt(before);
-        int addInt = Integer.parseInt(add);
-        int subInt = Integer.parseInt(sub);
-        if (a <= 0) return 1;
-        if (a <= 100000000) return 0;// else: Zahl zu groß¸ 
-        }
-      catch(Exception ee) {
-    	  leereEingabeFM.setText("Bitte nur Zahlen eingeben");
-         return 1;
-      }
-      return 2;
-    }
-  
-  private int subQuantity(String sub, String before) {
-      try {   
-        int beforeInt = Integer.parseInt(before);
-        int subInt = Integer.parseInt(sub);
-        }
-      catch(Exception ee) {
-    	  leereEingabeFM.setText("Bitte nur Zahlen eingeben");
-         return 1;
-      }
-      return 2;
-    }
- 
-}*/

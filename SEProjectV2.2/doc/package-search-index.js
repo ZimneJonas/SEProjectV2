@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"userInterface.mainWindow"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"exceptions"},{"l":"start"},{"l":"userInterface.changeCategory"},{"l":"userInterface.editProductInterface"},{"l":"userInterface.mainWindow"}]

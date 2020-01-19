@@ -12,6 +12,12 @@ import java.awt.TextField;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+/**
+ * Interface of the Add and EditProduct Class
+ * @author Rita 
+ * 
+ *
+ */
 @SuppressWarnings("serial")
 public class Interface extends JFrame {
 	   public JButton addProduct;
@@ -22,9 +28,13 @@ public class Interface extends JFrame {
 	   public Choice categories;
 	   
 
-
+		/**
+		 *  constructs the Interface with all Labels and Buttons.
+		 *  Uses GridBagLayout to implement the Layout
+		 */
 	   public Interface() {
 	     super ("Produkt hinzufuegen"); //set title
+	     this.setResizable(false);
 	    // this.setLocationRelativeTo(null); //Middle of screen
 	     myGBL = new GridBagLayout ();
 	     setLayout(myGBL);
@@ -40,7 +50,7 @@ public class Interface extends JFrame {
 	     myGBC.gridy = 7;
 	     myGBC.gridwidth = 1; // width of the element
 	     myGBC.gridheight = 1; // height of the element
-	     addProduct = new JButton ("Produkt hinzufügen");
+	     addProduct = new JButton ("Produkt hinzufuegen");
 	     addProduct.setBackground(Color.green);
 	     myGBL.setConstraints(addProduct, myGBC);
 	     add(addProduct);
@@ -71,7 +81,7 @@ public class Interface extends JFrame {
 	     myGBL.setConstraints(descriptionTF, myGBC);
 	     add(descriptionTF);
 
-	     myGBC.gridx = 6;
+	     myGBC.gridx = 4;
 	     myGBC.gridy = 0;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
@@ -100,7 +110,7 @@ public class Interface extends JFrame {
 	     myGBC.gridy = 1;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
-	     weightFM = new Label ("                        ");
+	     weightFM = new Label ("                                                  ");
 	     myGBL.setConstraints(weightFM, myGBC);
 	     add(weightFM);
 
@@ -109,7 +119,7 @@ public class Interface extends JFrame {
 	     myGBC.gridy = 2;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
-	     Label price = new Label ("Stückpreis(€): ");
+	     Label price = new Label ("Stueckpreis (Euro): ");
 	     myGBL.setConstraints(price, myGBC);
 	     add(price);
 

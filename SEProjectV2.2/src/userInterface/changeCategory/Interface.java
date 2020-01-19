@@ -10,17 +10,39 @@ import java.awt.List;
 import java.awt.TextField;
 import javax.swing.JFrame;
 
+/**
+ * This class sets the interface for the ChangeCategery window.
+ * The window contains two buttons (add delete), a textfield, and a List where all existing categories are displayed.
+ * @author Rita
+ *
+ */
+
 @SuppressWarnings("serial")
 public class Interface extends JFrame{
 	
-
+	/**
+	 * button delete category
+	 * 
+	 */
 	public Button deleteCategory;
+	/**
+	 * Button add category
+	 */
 	public Button addCat;
+	
+	/**
+	 * List of existing categories
+	 */
 	public List list;
+	/**
+	 * textfield
+	 */
 	public TextField addCategoryTF;
+	
 	
 	public Interface() {
 		super ("Kategorien"); // set title
+		this.setResizable(false);
 		GridBagLayout myGBL = new GridBagLayout ();
 		setLayout(myGBL);
 		
@@ -35,7 +57,7 @@ public class Interface extends JFrame{
 		myGBC.gridy = 1;
 		myGBC.gridwidth = 2; // width of the element
 		myGBC.gridheight = 1; // height of the element
-		deleteCategory = new Button ("löschen");
+		deleteCategory = new Button ("loeschen");
 		deleteCategory.setBackground(Color.red);
 		myGBL.setConstraints(deleteCategory, myGBC);
 		add(deleteCategory, myGBC);
@@ -45,7 +67,7 @@ public class Interface extends JFrame{
 		myGBC.gridy = 6;
 		myGBC.gridwidth = 1; 
 		myGBC.gridheight = 1; 
-		addCat = new Button ("Hinzufügen");
+		addCat = new Button ("Hinzufuegen");
 		addCat.setBackground(Color.green);
 		myGBL.setConstraints(addCat, myGBC);
 		add(addCat, myGBC);
@@ -63,7 +85,7 @@ public class Interface extends JFrame{
 		myGBC.gridy = 5;
 		myGBC.gridwidth = 2; 
 		myGBC.gridheight = 1; 
-		Label addCategory = new Label ("Kategorie hinzufügen:");
+		Label addCategory = new Label ("Kategorie hinzufuegen:");
 		myGBL.setConstraints(addCategory, myGBC);
 		add(addCategory, myGBC);
 		

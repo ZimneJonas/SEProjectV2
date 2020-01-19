@@ -1,1 +1,5 @@
+exceptions
+start
+userInterface.changeCategory
+userInterface.editProductInterface
 userInterface.mainWindow

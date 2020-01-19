@@ -7,11 +7,20 @@ import javax.swing.JOptionPane;
 
 import javax.swing.JFrame;
 
+
+/**
+ * 
+ * The change Category Class extends the Interface and adds the Actions Listeners.
+ * @author Jonas
+ * @see userInterface.changeCategory.Interface
+ */
+
 @SuppressWarnings("serial")
-public class ChangeCategory extends Interface implements ActionListener{
+public class ChangeCategoryClass extends Interface implements ActionListener{
   
   // view of the window
-  public ChangeCategory (){
+	
+  public ChangeCategoryClass (){
     super();
     this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     this.setSize(300, 250);
@@ -22,7 +31,9 @@ public class ChangeCategory extends Interface implements ActionListener{
     this.refreshList();
 
   } 
-  
+  /**
+   * reloads the List
+   */
   public void refreshList() {
     this.list.removeAll();
     for (String h: start.Main.categoryList) {
@@ -69,6 +80,12 @@ public class ChangeCategory extends Interface implements ActionListener{
       else { throw new Exception("Invalide Eingabe");}
     }
   }
+  
+  /**
+   * check the Category Syntax
+   * @param name
+   * @return 0 if there are no errors, else int!=0
+   */
 
   private int checkCategoryname(String name) {
       //List<Character> Zeichen = new List<Character>();
@@ -85,7 +102,6 @@ public class ChangeCategory extends Interface implements ActionListener{
       Zeichen.add('Y'); Zeichen.add('Z');
       Zeichen.add('0'); Zeichen.add('1'); Zeichen.add('2'); Zeichen.add('3'); Zeichen.add('4'); Zeichen.add('5');
       Zeichen.add('6'); Zeichen.add('7'); Zeichen.add('8'); Zeichen.add('9');
-      Zeichen.add('ä'); Zeichen.add('ö'); Zeichen.add('ü'); Zeichen.add('Ä'); Zeichen.add('Ö'); Zeichen.add('Ü');
 
       //char[] chara = name.toCharArray();
       for (char ch: name.toCharArray()) {

@@ -1,7 +1,6 @@
 package userInterface.mainWindow;
 
 import java.awt.Button;
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,19 +12,30 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 
+/**
+ * The class Layout describes what the Layout of the MainWindow looks like. 
+ * Layout uses the GridBagLayout and assigns where the JLabels, Buttons, JCheckBoxes appear.
+ * @author Rita
+ */
+
 public class Layout extends JPanel{	
 
 	private static final long serialVersionUID = 1L;
+	/**
+	 * buttons of Layout
+	 */
 	public Button addProduct, search, editCategory; 
 	JScrollPane pane;
 	JLabel term;
+	/**
+	 * textfield of search function
+	 */
 	JTextField termTF;
-	private JCheckBox descriptionCB;
-	private JCheckBox quantityCB;
-	private JCheckBox categoryCB;
-	private JCheckBox priceCB;
-	private JCheckBox stocknumberCB;
-	private JCheckBox weightCB;
+	
+	/**
+	 * checkboxes
+	 */
+	private JCheckBox descriptionCB, quantityCB, categoryCB, priceCB, stocknumberCB, weightCB;
 	
 	Layout(){
 		
@@ -43,7 +53,7 @@ public class Layout extends JPanel{
 		myGBC.gridwidth = 1; // width of the element
 		myGBC.gridheight = 3; // height of the element
 		myGBC.fill = GridBagConstraints.BOTH;
-		addProduct = new Button ("Produkt hinzufügen");
+		addProduct = new Button ("Produkt hinzufuegen");
 		addProduct.setBackground(Color.green);
 		add(addProduct,myGBC);
 		
@@ -111,7 +121,7 @@ public class Layout extends JPanel{
 		myGBC.gridwidth = 1; 
 		myGBC.gridheight = 1;
 		myGBC.fill = GridBagConstraints.BOTH;
-		//priceCB = new Checkbox ("Stückpreis");
+		//priceCB = new Checkbox ("StÂ¸ckpreis");
 		priceCB = start.Main.table.getCheckBox(3);
 		add(priceCB,myGBC);
 	

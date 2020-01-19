@@ -9,31 +9,49 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-//TableModel that returns the actual class and not String
+//TableModel that return the actual class and not String
 //May or may not be needed
+
 
 /**
  * Table that visualizes a DefaultTableModel.
- *  @see javax.swing.JTable
  * Has JCheckbox[] that correspond to the table headers.
  * Upon declaration, the table's model is loaded by an external text data.
- * @see start.Main.Datahandler.load()
+ * @see  start.DataHandler#load()
  *@author Dalya
+ *@see javax.swing.JTable
  *
  */
 
 
 public class DataTable extends JTable{
   
+	private static final long serialVersionUID = 1L;
+	/**
+	 * the headers of the table
+	 */
+	static String[] columnNames = {"Produktbezeichnung", "Kategorie", "Lagernummer", "Gewicht", "Stueckpreis (Euro)", "Anzahl"};
+	
+	/**
+	 * the model of the table
+	 */
+	
+	public static DefaultTableModel model= start.DataHandler.load();
 
-  private static final long serialVersionUID = 1L;
-
-  static String[] columnNames = {"Produktbezeichnung", "Kategorie", "Lagernummer", "Gewicht", "Stückpreis (€)", "Anzahl"};
-  public static DefaultTableModel model= start.DataHandler.load();
-  //ArrayList<JCheckBox> searchCheckboxes = new ArrayList<>();
-  JCheckBox[] CheckboxArray = new JCheckBox[columnNames.length];
-  
-  TableRowSorter sorter;
+	/**
+	 * The Checkboxes to be added to the interface
+	 */
+	JCheckBox[] CheckboxArray = new JCheckBox[columnNames.length];
+	
+	/**
+	 * The sorter that implements the search function
+	 */
+	TableRowSorter sorter;
+    
+	
+	/**
+	 * constructs the table and the checkboxes
+	 */
     
   public DataTable() {
     
@@ -93,10 +111,11 @@ public class DataTable extends JTable{
       
   }
   
-  /**
-   * returns the indexes of the selected CheckBoxes in an array.
-   * 
-   */
+	/**
+	 * return the indexes of the selected CheckBoxes in an array.
+	 * 
+	 * @return indexes
+	 */
   
   @Override
   public int[] getSelectedColumns() {
@@ -117,7 +136,7 @@ public class DataTable extends JTable{
 
      }
   /*
-  // returns selected checkboxes
+  // return selected checkboxes
   public int[] getSelectedColumns() {
     ArrayList<Integer> indexesOfSelected = new ArrayList<Integer>();
     for (int i = 0; i < this.searchCheckboxes.size(); ++i) {
@@ -140,10 +159,11 @@ public class DataTable extends JTable{
   }*/
 
   /**
-   * returns CheckBox at index
-   * @param index index of CheckBox
-   * @return
-   */
+	/**
+	 * return CheckBox at index
+	 * @param index index of CheckBox
+	 * @return
+	 */
   JCheckBox getCheckBox(int index){
        return this.CheckboxArray[index];
       }

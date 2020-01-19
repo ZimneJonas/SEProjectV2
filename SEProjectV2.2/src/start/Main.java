@@ -74,6 +74,12 @@ import java.util.TimerTask;
 import javax.swing.table.DefaultTableModel;
 
 
+/**
+ * Main Class, which initializes mainFrame, the categoryList and the DataTable.
+ * The Main Class also saves every minute and after the Program is closed.  
+ * @author Dalya
+ *
+ */
 public class Main {
 
   public static ArrayList<String> categoryList = new ArrayList<String>();
