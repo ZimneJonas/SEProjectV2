@@ -3,7 +3,7 @@ We want a program that makes use of a database(DATA) that more or less models th
 Data will alter the information displayed through the GUI and the GUI can query information from DATA.  
 Configuration will be explained (a little bit more) further below.
 
-(here should be a graphic)
+Please take a look at 'grafikarchitecturaldesign.png', it's in the same folder.
 
 The advantages are that we have few small components so it's very maintenance-friendly, since it's all running on the same hardware, supposedly a pc, we have fast communication and very low communications-overhead. Our system is as safe as other systems that have the same size(e.g. number of components), maybe a little bit saver because it's all running on the same hardware, or at least that is how it can be done.
 
